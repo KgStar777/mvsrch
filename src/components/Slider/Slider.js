@@ -1,7 +1,9 @@
 import React from 'react';
-import classes from "../Start.module.css";
+import classes from "../Start2.module.css";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/swiper.scss';
+import axios from "axios";
+import {Route, Switch} from "react-router-dom";
 
 const SliderDiv = (props) => {
     // const state = {
@@ -78,20 +80,39 @@ const SliderDiv = (props) => {
     //         }
     //     ]
     // }
+    function handleCLick(id) {
+        
+        axios.get(`https://imdb-api.com/en/API/Title/k_duil6gx5/${id}`).then(resp => {
+            console.log(resp)
+            // const state = {
+            //     thisFilms: resp
+            // }
+            // console.log(state)
+            if (resp) {
+                // <Switch>
+                //     <Route path='/film' component={Film}/>
+                // </Switch>
+            }
+        })
+        console.log('click', id);
+    }
     return (
-        <Swiper spaceBetween={50}
-                slidesPerView={3}
+        <Swiper spaceBetween={40}
+                slidesPerView={4}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}>
-            {props.state.results.map((film, idx) => (
-                <SwiperSlide >
-                    <div key={idx} className={classes.filmWrapper}>
+            {props.state.results.map((film, id) => (
+
+                <SwiperSlide onClick={() => {handleCLick(film.id)}}
+                             src={film.id}>
+                    <div key={id}
+                         className={classes.filmWrapper}>
                         <div>
                             <img src={film.image}/>
                         </div>
                         <div className={classes.descriptionWrapper}>
                             <p className={classes.title}>{film.title}</p>
-
+                            <span>{film.description}</span>
                         </div>
                     </div>
                 </SwiperSlide>

@@ -1,6 +1,6 @@
 import classes from './App.module.css';
 import React from "react";
-import Start from "./components/Start";
+import Start2 from "./components/Start2";
 import * as axios from "axios";
 import SliderDiv from "./components/Slider/Slider";
 
@@ -29,7 +29,7 @@ class App extends React.Component {
 
         return (
             <div className={classes.body}>
-                <Start state={this.state}/>
+                <Start2 state={this.state}/>
             </div>
         );
     }
