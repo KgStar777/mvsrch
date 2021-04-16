@@ -1,37 +1,28 @@
-import classes from './App.module.css';
 import React from "react";
 import Start2 from "./components/Start2";
-import * as axios from "axios";
-import SliderDiv from "./components/Slider/Slider";
-
+import {Route, Switch} from "react-router-dom";
+import Film from "./components/FIlm/Film";
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
             expression: '',
-            movies: [
-                // {
-                //     description: '',
-                // },
-            ],
+            movies: [],
             videoURL: 'https://www.youtube.com/watch?v=gA0nQyDZR4A&ab_channel=SawtoStuudio'
         }
     }
 
-
-    componentDidMount () {
-
-    }
+    componentDidMount() {}
 
     render() {
 
-
         return (
-            <div className={classes.body}>
-                <Start2 state={this.state}/>
-            </div>
-        );
+            <Switch>
+                <Route exact path="/" component={Start2}/>
+                <Route path="/film/:filmId" component={Film}/>
+            </Switch>
+        )
     }
 }
 

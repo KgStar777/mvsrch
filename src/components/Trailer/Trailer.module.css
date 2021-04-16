@@ -1,0 +1,17 @@
+.button {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0);
+    border: none;
+    color: grey;
+    margin: 10px 250px 4px 3px;
+    font-size: 40px;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+    border-radius: 8px;
+}
+
+.button:hover {
+    text-shadow: black 0 0 20px;
+}
