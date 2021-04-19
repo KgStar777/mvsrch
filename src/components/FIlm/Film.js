@@ -19,13 +19,18 @@ const Film = ({match, location}) => {
 
     const [inp, setInp] = useState('')
 
+
+    console.log('COMPONENT RENDER')
+    console.log('match: ', match.params)
     useEffect(() => {
+        console.log('USE EFFECT RENDER')
         axios.get(`https://imdb-api.com/en/API/Title/${apiKey}/${filmId}`)
             .then(resp => {
                 setFilms(resp.data)
-                // console.log("films", films)
+                console.log("films", films)
             })
-    }, [])
+        // render();
+    }, match.params.filmId)
 
     const onKeyDown = e => setInp(e.target.value)
 

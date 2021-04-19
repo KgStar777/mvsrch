@@ -7,10 +7,10 @@ import { apiKey } from "../api/api";
 
 class Start2 extends React.Component {
     constructor(props) {
-        // console.log(props)
         super(props);
         this.state = {
-            searchField: '',
+            // searchField: '',
+            searchField: this.props.location.inp ? this.props.location.inp.inp : '',
             films: {
                 results: null
             }
@@ -18,9 +18,7 @@ class Start2 extends React.Component {
     }
 
     componentDidMount() {
-        // console.log("CDM: ", this.props)
         if (this.props.location.inp) {
-            this.setState({searchField: this.props.location.inp.inp});
             this.getMovies();
         }
     }
@@ -29,8 +27,8 @@ class Start2 extends React.Component {
         this.setState({searchField: e.target.value})
     }
 
-
     getMovies() {
+        console.log("GMV: ", this.state)
         const movie = this.state.searchField
         const baseUrl = `https://imdb-api.com/en/API/Search/${apiKey}/${movie}`
         console.log('getMovies GO: ', baseUrl);
@@ -38,12 +36,11 @@ class Start2 extends React.Component {
         axios.get(`${baseUrl}`)
             .then(resp => {
                 this.setState({films: resp.data})
-                // console.log("film", resp.data)
             })
     }
 
     render(props) {
-        // console.log(this.state)
+        console.log("render: ", this.state)
         return (
             <div className={classes.videoBg}>
 

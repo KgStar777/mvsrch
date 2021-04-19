@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-export const apiKey = 'k_duil6gx5'
+export const apiKey = 'k_o1r19ycg'
 // k_duil6gx5
 // k_o1r19ycg
 

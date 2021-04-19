@@ -4,14 +4,17 @@
     background: rgba(0,0,0,0);
     border: none;
     color: grey;
-    margin: 10px 250px 4px 3px;
+    /*margin: 10px 250px 4px 3px;*/
     font-size: 40px;
-    align-self: flex-end;
+    /*align-self: flex-start;*/
     cursor: pointer;
     transition: ease-in-out .3s;
     border-radius: 8px;
+    margin-bottom: 440px;
+    margin-left: 5px;
+
 }
 
 .button:hover {
-    text-shadow: black 0 0 20px;
+    text-shadow: white 0 0 20px;
 }
