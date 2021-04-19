@@ -19,22 +19,20 @@ const SearchInput = () => {
                 return response.json()
             })
             .then((data) => {
-                // console.log(data)
                 setResponseArr(data)
-                // console.log("respArr: ", responseArr);
             })
     };
 
     const handleSearchFilm = (e) => {
         const filmList = document.getElementById("filmList");
         let filmListValue = filmList.options[filmList.selectedIndex];
-        console.log(filmListValue)
     }
 
     return (
         <>
             <input type="text"
                    list="filmList"
+                   placeholder="enter movie title..."
                    value={searchString}
                    onChange={onChangeSearch}
                    className={classes.filmInput}/>

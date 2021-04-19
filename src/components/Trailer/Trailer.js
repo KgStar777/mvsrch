@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Trailer.module.css'
 
 const Trailer = (props) => {
-    console.log('trailer Props', props)
     return <div style={{
         position: "fixed", width: "100%",
         flexDirection: 'row-reverse',

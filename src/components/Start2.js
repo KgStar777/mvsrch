@@ -21,6 +21,7 @@ class Start2 extends React.Component {
         if (this.props.location.inp) {
             this.getMovies();
         }
+
     }
 
     handleChange(e) {
@@ -28,11 +29,10 @@ class Start2 extends React.Component {
     }
 
     getMovies() {
-        console.log("GMV: ", this.state)
+
         const movie = this.state.searchField
         const baseUrl = `https://imdb-api.com/en/API/Search/${apiKey}/${movie}`
-        console.log('getMovies GO: ', baseUrl);
-        // console.log('this.state.searchField: ', this.state.searchField, movie)
+
         axios.get(`${baseUrl}`)
             .then(resp => {
                 this.setState({films: resp.data})
@@ -40,7 +40,7 @@ class Start2 extends React.Component {
     }
 
     render(props) {
-        console.log("render: ", this.state)
+
         return (
             <div className={classes.videoBg}>
 
@@ -69,7 +69,6 @@ class Start2 extends React.Component {
                     <div>
                     { ((this.state.films && this.state.films.results) !== null) ?
                         <div className={classes.filmsWrapper}>
-                            {/*{ console.log("films.result: " , this.state.films.results) }*/}
                             {
                                 <SliderDiv films={this.state.films.results} />
 
