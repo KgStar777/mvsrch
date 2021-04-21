@@ -184,10 +184,12 @@
         max-width: 575px;
     }
     .videoContent p {
+        display: none;
         max-width: 575px;
         font-size: 2em;
     }
     .inputWrapper {
+        margin-top: 50px;
         max-width: 420px;
     }
     .inputWrapper button {
@@ -195,6 +197,9 @@
     }
     .inputWrapper input {
         font-size: 16px;
+    }
+    .inputWrapper button:hover {
+        letter-spacing: 3px;
     }
 }
 
@@ -250,5 +255,9 @@
     .filmWrapper img {
         margin: 10px;
         height: 110px;
+    }
+
+    .title h1 {
+        padding-left: 10px;
     }
 }

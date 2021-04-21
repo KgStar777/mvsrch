@@ -87,7 +87,7 @@ const Film = ({match, location}) => {
                 </section>
                 <section className={classes.about}>
                     <h2>Watch "{films.title}" on Richbee Shows</h2>
-                    <p>{films.plot}</p>
+                    <p className={classes.filmAbout}>{films.plot}</p>
 
                     {films.similars ?
                         <>
