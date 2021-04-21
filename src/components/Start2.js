@@ -31,13 +31,13 @@ class Start2 extends React.Component {
     }
 
     getMovies() {
-
         const movie = this.state.searchField
         const baseUrl = `https://imdb-api.com/en/API/Search/${apiKey}/${movie}`
 
         axios.get(`${baseUrl}`)
             .then(resp => {
                 this.setState({films: resp.data})
+                this.setState({searchField: ''})
             })
     }
 
@@ -64,8 +64,10 @@ class Start2 extends React.Component {
                     <p>Watch anywhere. Cancel anytime.</p>
                     <div className={classes.inputWrapper}>
                         <input
+                            placeholder="enter movie title..."
                             value={this.state.searchField}
                             onChange={this.handleChange.bind(this)}
+                            onKeyPress={(e) => {if(e.key === 'Enter') {this.getMovies()} }}
                         />
                         <button
                             onClick={this.getMovies.bind(this)}
