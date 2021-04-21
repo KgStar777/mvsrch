@@ -28,7 +28,7 @@ html, body {
     padding: 0;
 }
 
-.videoBg iframe {
+.videoBg iframe, .videoBg video {
     position: absolute;
     top: 0;
     left: 0;

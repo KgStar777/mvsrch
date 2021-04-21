@@ -3,6 +3,8 @@ import classes from './Start2.module.css';
 import * as axios from "axios";
 import SliderDiv from "./Slider/Slider";
 import { apiKey } from "../api/api";
+import AWAKENING from "../assets/video/AWAKENING.mp4";
+import Poster from "../assets/img/poster4.png"
 
 
 class Start2 extends React.Component {
@@ -44,13 +46,17 @@ class Start2 extends React.Component {
         return (
             <div className={classes.videoBg}>
 
-                <iframe src="https://www.youtube.com/embed/gA0nQyDZR4A?autoplay=1&fs=0&loop=1"
-                        width="720" height="540"
-                        color="white"
-                        frameBorder="0"
-                        allow="autoplay"
-                        autoPlay={true}
-                        allowfullscreen="true" />
+                <video width="720" height="540" loop="loop" poster={Poster} autoplay="autoplay" muted="muted">
+                    <source src={AWAKENING}/>
+                </video>
+
+                {/*<iframe src="https://www.youtube.com/embed/gA0nQyDZR4A?autoplay=1&fs=0&loop=1"*/}
+                {/*        width="720" height="540"*/}
+                {/*        color="white"*/}
+                {/*        frameBorder="0"*/}
+                {/*        allow="autoplay"*/}
+                {/*        autoPlay={true}*/}
+                {/*        allowfullscreen="true" />*/}
 
                 <div className={classes.effects}/>
                 <div className={classes.videoContent}>
