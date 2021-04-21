@@ -160,26 +160,22 @@
 }
 
 @media screen and (max-width: 980px) {
-    .filmWrapper {
-        max-width: 980px;
-    }
+    /*.filmWrapper {*/
+    /*    max-width: 980px;*/
+    /*}*/
     .videoContent h3 {
         font-size: 3em;
     }
     .inputWrapper {
         max-width: 520px;
     }
-
-    .filmWrapper {
-
-    }
 }
 
 
 @media screen and (max-width: 767px) {
-    .filmWrapper {
-        max-width: 767px;
-    }
+    /*.filmWrapper {*/
+    /*    max-width: 767px;*/
+    /*}*/
     .videoContent {
         padding: 0 15px;
         max-width: 600px;
@@ -203,9 +199,9 @@
 }
 
 @media screen and (max-width: 575px) {
-    .filmWrapper {
-        max-width: 575px;
-    }
+    /*.filmWrapper {*/
+    /*    max-width: 575px;*/
+    /*}*/
     .videoContent h3 {
         max-width: 400px;
         font-size: 2em;
@@ -238,18 +234,18 @@
         justify-content: space-around;
     }
 
-    .descriptionWrapper p {
-        font-size: 14px;
-    }
+    /*.descriptionWrapper p {*/
+    /*    font-size: 14px;*/
+    /*}*/
 
-    .descriptionWrapper span {
-        font-size: 12px;
-        margin-bottom: 10px;
-    }
+    /*.descriptionWrapper span {*/
+    /*    font-size: 12px;*/
+    /*    margin-bottom: 10px;*/
+    /*}*/
 
-    .filmWrapper {
+    /*.filmWrapper {*/
         /*max-width: 300px;*/
-    }
+    /*}*/
 
     .filmWrapper img {
         margin: 10px;
