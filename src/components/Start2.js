@@ -61,7 +61,7 @@ class Start2 extends React.Component {
                 <div className={classes.effects}/>
                 <div className={classes.videoContent}>
                     <h3>Unlimited movies, TV shows, and more.</h3>
-                    <p>Watch anywhere. Cancel anytime.</p>
+                    <p className={classes.descr}>Watch anywhere. Cancel anytime.</p>
                     <div className={classes.inputWrapper}>
                         <input
                             placeholder="enter movie title..."
@@ -76,7 +76,7 @@ class Start2 extends React.Component {
                     </div>
                     <div>
                     { ((this.state.films && this.state.films.results) !== null) ?
-                        <div className={classes.filmsWrapper}>
+                        <div style={{width: window.innerWidth}} className={classes.filmsWrapper}>
                             {
                                 <SliderDiv films={this.state.films.results} />
 

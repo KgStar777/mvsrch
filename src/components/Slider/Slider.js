@@ -5,10 +5,15 @@ import 'swiper/swiper.scss';
 import { NavLink } from "react-router-dom";
 
 const SliderDiv = (props) => {
+    function calc() {
+        const windowSize = window.innerWidth
+        if(windowSize < 700) return 3
+        if(windowSize >= 700) return 4
+    }
 
     return (
         <Swiper spaceBetween={30}
-                slidesPerView={4}
+                slidesPerView={calc()}
                 // onSlideChange={}
                 // onSwiper={}
         >
@@ -23,14 +28,14 @@ const SliderDiv = (props) => {
                              style={{color: "#FFF", textDecoration: "none"}}>
                         <div className={classes.filmWrapper}>
                             <div>
-                                <img src={film.image}/>
+                                <img style={{maxWidth: "95px", height: '141px'}} src={film.image}/>
                             </div>
                             <div className={classes.descriptionWrapper}>
                                 <p className={classes.title}>{film.title}</p>
                                 {film.imDbRating
                                     ? <>
                                         <span>
-                                        <div style={{ width: "60px", fontSize: '10px',
+                                        <div style={{ maxWidth: "60px", fontSize: '8px',
                                             backgroundColor:"#FAC539",
                                             padding: '4px 0',
                                             textAlign: "center",

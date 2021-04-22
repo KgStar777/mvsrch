@@ -2,6 +2,10 @@ import React from 'react';
 import classes from './Trailer.module.css'
 
 const Trailer = (props) => {
+
+    let posX = window.innerWidth - 100;
+    let posY = posX / 1.6
+
     return <div style={{
         position: "fixed", width: "100%",
         flexDirection: 'row-reverse',
@@ -14,7 +18,7 @@ const Trailer = (props) => {
                 onClick={() => props.setTrailerBool(false)}>X
         </button>
         <iframe style={{marginLeft: '40px'}}
-                id="ytplayer" type="text/html" width="720" height="405"
+                id="ytplayer" type="text/html" width={posX} height={posY}
                 src={`https://www.youtube.com/embed/${props.state.videoId}`}
                 frameBorder="0" allowFullScreen/>
     </div>

@@ -365,15 +365,16 @@ footer p {
         margin-left: 12px;
     }
 
-    /*.title {*/
-    /*    padding-top: 90px;*/
-    /*    max-width: 350px;*/
-    /*    margin: 0;*/
-    /*    padding-left: 50px;*/
-    /*}*/
+    .title {
+        padding-top: 90px;
+        max-width: 350px;
+        margin: 0;
+        padding-left: 50px;
+    }
 
     .filmAbout {
         padding-left: 50px;
+        text-align: justify;
     }
 
     .title h1 {
@@ -401,6 +402,13 @@ footer p {
     .awards {
         font-size: 12px;
         margin-bottom: 40px;
+    }
+
+    footer {
+        height: 50px;
+    }
+    footer p {
+        font-size: 12px;
     }
 }
 

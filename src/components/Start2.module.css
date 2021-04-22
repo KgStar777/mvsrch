@@ -58,7 +58,7 @@
     cursor: default;
 }
 
-.videoContent p {
+.descr {
     text-align: center;
     font-size: 36px;
     margin: 36px 0 74px 0;
@@ -108,13 +108,20 @@
 /* СПИСОК ФИЛЬМОВ */
 
 .filmsWrapper {
-    max-width: 1560px;
+
+
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    /*margin-bottom: 40px;*/
+    /*max-width: 100%;*/
     height: 170px;
+    /*margin-top: 40px;*/
 }
 
 .filmWrapper {
     display: flex;
-    max-width: 400px;
+    max-width: 100%;
     margin: 40px 0 20px 0;
     background: #111111;
     opacity: 0.8;
@@ -130,8 +137,8 @@
 }
 
 .filmWrapper img {
-    max-width: 95px;
-    height: 141px;
+    /*max-width: 95px;*/
+    /*height: 141px;*/
     margin: 15px;
     border-radius: 3px;
 }
@@ -159,15 +166,25 @@
     margin-right: 7px;
 }
 
+
+
+
 @media screen and (max-width: 980px) {
     /*.filmWrapper {*/
     /*    max-width: 980px;*/
     /*}*/
+
     .videoContent h3 {
         font-size: 3em;
     }
+
+    .descr {
+        display: none;
+    }
+
     .inputWrapper {
         max-width: 520px;
+        margin-top: 40px;
     }
 }
 
@@ -183,11 +200,14 @@
     .videoContent h1 {
         max-width: 575px;
     }
-    .videoContent p {
-        display: none;
+    .descr {
         max-width: 575px;
-        font-size: 2em;
+        display: none;
     }
+
+    .videoContent p {
+    }
+
     .inputWrapper {
         margin-top: 50px;
         max-width: 420px;
@@ -212,9 +232,12 @@
         font-size: 2em;
         padding: 0 10px;
     }
-    .videoContent p {
+    .descr {
         display: none;
-        font-size: 1.5em;
+        padding: 0 10px;
+    }
+
+    .videoContent p {
         padding: 0 10px;
     }
     .inputWrapper {
