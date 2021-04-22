@@ -5,15 +5,21 @@ import 'swiper/swiper.scss';
 import { NavLink } from "react-router-dom";
 
 const SliderDiv = (props) => {
-    function calc() {
-        const windowSize = window.innerWidth
-        if(windowSize < 700) return 3
+    const windowSize = window.innerWidth
+    function calcSlides() {
+        if(windowSize <= 500) return 2
+        if(windowSize < 700 && windowSize> 500) return 3
         if(windowSize >= 700) return 4
+    }
+    const calcSpace = () => {
+        if (windowSize > 800) return 30
+        if (windowSize > 500 && windowSize <= 800) return 20
+        else return 10
     }
 
     return (
-        <Swiper spaceBetween={30}
-                slidesPerView={calc()}
+        <Swiper spaceBetween={calcSpace()}
+                slidesPerView={calcSlides()}
                 // onSlideChange={}
                 // onSwiper={}
         >
@@ -28,10 +34,10 @@ const SliderDiv = (props) => {
                              style={{color: "#FFF", textDecoration: "none"}}>
                         <div className={classes.filmWrapper}>
                             <div>
-                                <img style={{maxWidth: "95px", height: '141px'}} src={film.image}/>
+                                <img style={{maxWidth: "95px", height: '16vh'}} src={film.image}/>
                             </div>
                             <div className={classes.descriptionWrapper}>
-                                <p className={classes.title}>{film.title}</p>
+                                <p style={{ padding: 0, fontSize: '.9em', margin: '0.7em 0 0 0', cursor: 'pointer'}} className={classes.title}>{film.title}</p>
                                 {film.imDbRating
                                     ? <>
                                         <span>
