@@ -78,7 +78,7 @@ class Start2 extends React.Component {
                     { ((this.state.films && this.state.films.results) !== null) ?
                         <div style={{width: window.innerWidth}} className={classes.filmsWrapper}>
                             {
-                                <SliderDiv films={this.state.films.results} />
+                                <SliderDiv style={{width: '100%'}} films={this.state.films.results} />
 
                             }
                     </div>

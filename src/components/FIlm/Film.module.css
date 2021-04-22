@@ -383,7 +383,7 @@ footer p {
     }
 
     .subscriptionText {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .subscription {
@@ -392,7 +392,8 @@ footer p {
 
     .rating {
         padding: 0 3px;
-        font-size: 8px;
+        font-size: 7px;
+        margin-right: 5px;
     }
 
     .watch {
