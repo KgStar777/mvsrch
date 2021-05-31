@@ -14,7 +14,7 @@ const Trailer = (props) => {
                 onClick={() => props.setTrailerBool(false)}>X
         </button>
         <iframe style={{marginLeft: '40px'}}
-                id="ytplayer" type="text/html" width="720" height="405"
+//                 id="ytplayer" type="text/html" width="720" height="405"
                 src={`https://www.youtube.com/embed/${props.state.videoId}`}
                 frameBorder="0" allowFullScreen/>
     </div>
