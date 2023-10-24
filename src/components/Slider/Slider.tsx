@@ -1,10 +1,10 @@
-import { Dispatch, ReactNode, useState } from 'react';
+import { Dispatch, ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
-import { RotatingLines } from 'react-loader-spinner';
 import { Swiper as Slider, SwiperSlide } from 'swiper/react';
 
 import { IFilm, ISimularMovie } from '@models/IFilm';
 import { FilmTypeDictionary } from '@models/FilmTypeDictionary';
+import { ImageWithLoading } from './ImageWithLoading';
 
 
 import 'swiper/css';
@@ -18,35 +18,20 @@ interface ISliderProps {
   getNext?: Dispatch<void>;
 }
 
-function ImageWithLoading({ src }: { src: string }) {
-  const [loading, setLoading] = useState(true);
-
-  const handleImageLoad = () => {
-    setLoading(false);
-  };
-
-  return (
-    <>
-      {loading && (
-        <div className={classes.loadingImage}>
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="60"
-            visible={loading}
-          />
-        </div>
-      )}
-      <img
-        src={src}
-        alt="Image"
-        style={{ display: loading ? 'none' : 'block' }}
-        onLoad={handleImageLoad}
-      />
-    </>
-  );
-}
+const breakpoints = {
+  400: {
+    width: 400,
+    slidesPerView: 2,
+  },
+  640: {
+    width: 640,
+    slidesPerView: 3,
+  },
+  768: {
+    width: 768,
+    slidesPerView: 5,
+  },
+};
 
 function getIFilmNode(obj: IFilm): ReactNode {
   return (
@@ -64,7 +49,7 @@ function getIFilmNode(obj: IFilm): ReactNode {
   )
 }
 
-function getSimularMovieNode(obj: ISimularMovie): ReactNode {
+function getISimularMovieNode(obj: ISimularMovie): ReactNode {
   return obj.type !== undefined && (
     <div className={classes.opts}>
       <p>{FilmTypeDictionary[obj?.type]}</p>
@@ -76,19 +61,18 @@ function getDescriptionNodeByObjType(obj: IFilm | ISimularMovie): ReactNode {
   if ("year" in obj) {
     return getIFilmNode(obj as IFilm);
   }
-  return getSimularMovieNode(obj as ISimularMovie);
-
+  return getISimularMovieNode(obj as ISimularMovie);
 }
 
 export const Slide = (props: ISliderProps) => {
   return !props.films ? null : (
     <Slider
-    onReachEnd={() => {
-      props?.getNext !== undefined && props.getNext();
-    }}
+      breakpoints={breakpoints}
+      onReachEnd={() => {
+        props?.getNext !== undefined && props.getNext();
+      }}
       className={classes.slider}
       spaceBetween={30}
-      slidesPerView={5}
     >
       {props.films.map((film, idx) => (
         <SwiperSlide key={idx} className={classes.slide}>

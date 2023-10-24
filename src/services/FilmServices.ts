@@ -6,15 +6,6 @@ interface FilterModel {
   [key: string]: string | number,
 }
 
-// const axiosInstance = axios.create({
-//   baseURL: "https://api.kinopoisk.dev",
-//   timeout: 5000,
-//   headers: {
-//     "Content-Type": "application/json",
-//     "X-API-KEY": apiKey,
-//   }
-// });
-
 const apiKey = import.meta.env.VITE_API_KEY;
 
 class FilmServices {

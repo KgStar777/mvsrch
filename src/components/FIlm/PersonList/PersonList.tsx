@@ -53,7 +53,7 @@ export function PersonList(props: IPersonListProps) {
               props.list.length > 10 &&
               splitArray(props.list
                 .slice(0, !isShortList
-                  ? 10
+                  ? 6
                   : props.list.length), 2)
                 .map((i, index) => (
                   <div key={index} className={classes.list}>

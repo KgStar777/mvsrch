@@ -4,11 +4,16 @@ import { useLocation } from "react-router-dom";
 
 import { FilmService } from '@services/FilmServices';
 import { IFilm } from "@models/IFilm";
-import { Slide } from "./Slider";
 import AWAKENING from "@assets/video/AWAKENING.mp4";
 import Poster from "@assets/img/poster4.png"
+import { Slide } from "./Slider";
 
 import classes from './Start.module.css';
+
+const startOptions = {
+  page: 1,
+  limit: 10,
+};
 
 export const Start = () => {
   const location = useLocation();
@@ -17,26 +22,34 @@ export const Start = () => {
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
   const [ error, setError ] = useState<string | null>(null);
   const [ total, setTotal ] = useState<number>(0);
-  const [ paginateOptions, setPaginateOptions ] = useState({
-    page: 1,
-    limit: 10,
-  });
+  const [ paginateOptions, setPaginateOptions ] = useState(startOptions);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setText(e.target.value);
   };
 
-  const handleSearch =  useCallback(async(dataInstallatipnType: "new" | "assign") => {
+  const handleSearch =  useCallback(async(requestReceivingType: "new" | "next") => {
     setIsLoading(true);
-    FilmService.getFilmsByText({ ...paginateOptions, text: text })
+    FilmService.getFilmsByText(requestReceivingType === "new"
+      ? { ...startOptions, text: text }
+      : {
+          limit: paginateOptions.limit,
+          page: paginateOptions.page + 1,
+          text: text
+      })
       .then((response) => {
         error && setError(null);
-        dataInstallatipnType === "new"
+        requestReceivingType === "new"
           ? setFilms(response?.data?.docs)
           : setFilms(prev => [...prev, ...response?.data?.docs as IFilm[]]);
         setTotal(response?.data?.total);
+        setPaginateOptions({
+          limit: response.data.limit,
+          page: response.data.page
+        });
         return response;
-      }).catch((error) => {
+      })
+      .catch((error) => {
         setError(error);
         setTotal(0);
         setFilms([]);
@@ -48,26 +61,16 @@ export const Start = () => {
 
   const getNext = useCallback(() => {
     if (paginateOptions.page * paginateOptions.limit < total) {
-      setPaginateOptions((prev) => ({
-        ...prev,
-        page: prev.page + 1,
-      }));
+      handleSearch("next");
     }
-  }, [paginateOptions, total])
+  }, [paginateOptions, total, handleSearch])
 
   useEffect(() => {
-    if (text !== "" && location.state?.search === text) {
+    if (text !== "" && location.state?.search === text && films.length === 0) {
       handleSearch("new");
     }
     /* eslint-disable-next-line */
   }, [text]);
-
-  useEffect(() => {
-    if (text !== "" && paginateOptions.page > 1) {
-      handleSearch("assign");
-    }
-  /* eslint-disable-next-line */
-  }, [paginateOptions]);
 
   return (
     <div className={classes.videoBg}>
@@ -109,14 +112,26 @@ export const Start = () => {
             </button>
           </div>
         </div>
-        {(
+        {!error ? (
           <div
             style={{ width: document.documentElement.scrollWidth }}
             className={classes.filmsWrapper}
           >
             <Slide getNext={getNext} films={films} />
           </div>
-        )}
+          )
+        : (
+          <div
+            style={{ width: document.documentElement.scrollWidth }}
+            className={classes.errorWrapper}
+            >
+              <article>
+                <div className={classes.messageBox}>
+                  <p>{error}</p>
+                </div>
+              </article>
+            </div>
+          )}
         </div>
       </div>
   )

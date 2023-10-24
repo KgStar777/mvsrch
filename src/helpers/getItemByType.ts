@@ -3,4 +3,4 @@ export const getItemByType = (
   item: any,
   type: string,
   key: string,
-) => typeof item !== type ? item[key] : item;
+) => typeof item !== type ? item?.[key] : item;
